@@ -35,6 +35,7 @@ while True:
     except:
         error()
 
+system('cls')
 print(f'\nSides:\nS1: {s1}\nS2: {s2}\nS3: {s3}\n')
 
 if s1 < (s2+s3) or s2 < (s1+s3) or s3 < (s1+s2):
