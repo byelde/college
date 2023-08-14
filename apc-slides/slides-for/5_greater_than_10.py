@@ -1,3 +1,5 @@
+'''Create a program receive 10 numbers and print the greater one'''
+
 from error import error
 
 lista = []

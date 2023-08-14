@@ -1,3 +1,5 @@
+'''Create a program to print the even numbers between 2-M (M is a number chosen by user)'''
+
 from error import error
 from os import system
 
