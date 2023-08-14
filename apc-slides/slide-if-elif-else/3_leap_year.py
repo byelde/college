@@ -1,4 +1,4 @@
-"""Create a program receive a integer corresponding to a year and inform if it`s leap"""
+"""Create a program receives a integer corresponding to a year and inform if it`s leap"""
 
 #imports
 from os import system

@@ -1,4 +1,4 @@
-"""Create a program that receive a integer N (1 <= N <= 12) and print the corresponding name of the month."""
+"""Create a program that receives a integer N (1 <= N <= 12) and print the corresponding name of the month."""
 
 
 #imports

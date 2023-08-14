@@ -1,4 +1,4 @@
-"""create a program receive three values and inform if is possible form a triangle and wich is it`s type"""
+"""create a program receives three values and inform if is possible form a triangle and wich is it`s type"""
 
 #iports
 from error import error

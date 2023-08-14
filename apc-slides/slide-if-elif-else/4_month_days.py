@@ -1,4 +1,4 @@
-"""Create a program receive two integer, the first one corresponding to a month and the second one to a year, and inform how much day the month has."""
+"""Create a program receives two integer, the first one corresponding to a month and the second one to a year, and inform how much day the month has."""
 
 #imports
 from os import system

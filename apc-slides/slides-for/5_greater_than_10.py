@@ -1,4 +1,4 @@
-'''Create a program receive 10 numbers and print the greater one'''
+'''Create a program receives 10 numbers and print the greater one'''
 
 from error import error
 
