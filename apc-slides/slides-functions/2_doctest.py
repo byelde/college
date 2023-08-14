@@ -1,5 +1,9 @@
+'''Create a program that use doctest.'''
+
+#imports
 import doctest
 
+#functions
 def soma(a,b):
     '''
     >>> soma(3,2)
@@ -62,5 +66,6 @@ def fact(b):
         f *= c
     return f
 
+#main
 if __name__ == "__main__":
     doctest.testmod()

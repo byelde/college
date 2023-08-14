@@ -1,11 +1,7 @@
-'''Create a program show a menu with sum, subtration, division, multiplication and factorial'''
-
-#imports
 from os import system
 import operations as o
 from colored import Fore, Style
 
-#main
 while True:
     while True:
         o.menu()
