@@ -20,12 +20,12 @@ defesas = []
 nomes = []
 
 for c in range(quantidade):
+    nomes.append(input())
     ids.append(int(input()))
     levels.append(int(input()))
     vidas.append(int(input()))
     ataques.append(int(input()))
     defesas.append(int(input()))
-    nomes.append(input())
 
 # dados
 for c in range(quantidade):

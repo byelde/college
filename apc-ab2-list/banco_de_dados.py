@@ -47,7 +47,8 @@ for c in range(quantidade):
 for c in range(quantidade):
     print(f'Idade: {idades[c]}')
     print(f'Nome: {nomes[c]}')
-    print(f'sexo: : {sexo[c]}')
-    print(f'Vida: {est_civil[c]}')
-    print(f'Ataque: {qnt_amigos[c]}')
-    print(f'Defesa: {qnt_fotos[c]}')
+    print(f'Sexo: {sexo[c]}')
+    print(f'Estado Civil: {est_civil[c]}')
+    print(f'Numero de amigos: {qnt_amigos[c]}')
+    print(f'Numero de fotos: {qnt_fotos[c]}')
+    print()

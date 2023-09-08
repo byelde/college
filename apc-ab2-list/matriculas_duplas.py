@@ -3,11 +3,8 @@ p2 = []
 p3 = []
 matdupla = []
 
-for c in range(45):
-    p2.append(int(input()))
-
-for c in range(30):
-    p3.append(int(input()))
+p2 = input().split()
+p3 = input().split()
 
 # CHECAR MAT DUPLA
 for aluno in p2:

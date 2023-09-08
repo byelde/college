@@ -15,43 +15,46 @@ Por fim, deve ser impressa a nota que teve a maior frequência absoluta, ou seja
 # Receber id e notas
 gab = input()
 
-id_alunos = []
-resps_alunos = []
+ids_resps = []
 
+ids = []
+resps = []
 while True:
-    id_aluno = int(input())
-    if id_aluno == 9999:
+    id_r = input().split()
+    if id_r[0] == '9999':
         break
-    resps_alunos.append(str(input()))
-    id_alunos.append(id_aluno)
+    ids.append(int(id_r[0]))
+    resps.append(id_r[1])
+
 # calcular notas
-nota_aluno = 0
 notas = []
 
-for c1 in range(len(resps_alunos)):
-    for n,a in enumerate(resps_alunos[c1]):
-        if a == gab[n]:
+for resposta in resps:
+    nota_aluno = 0
+    for n in range(10):
+        if resposta[n] == gab[n]:
             nota_aluno += 1
     notas.append(nota_aluno)
-    nota_aluno = 0
-print(notas)
+
 
 # calcular porcentagem de aprovados
 aprovados = 0
 for nota in notas:
     if nota >= 6:
         aprovados += 1
+p_aprovados = f'{(aprovados/len(ids))*100:.1f}%'
 
-p_aprovados = f'{(aprovados/len(id_alunos))*100:.1f}%'
 
 # calcular nota que mais apareceu
-nmf, fn = 0, 0
-for n, nota in enumerate(notas):
-    if notas.count(nota) > fn:
-        nmf = nota
+n_m_f, maior_f = 0, -1
+for nota in notas:
+    if notas.count(nota) > maior_f:
+        maior_f = notas.count(nota)
+        n_m_f = nota
+
 
 # mostrar valores
-for c in range(len(id_alunos)):
-    print(f'{id_alunos[c]} {notas[c]:.1f}')
+for c in range(len(ids)):
+     print(f'{ids[c]} {notas[c]:.1f}')
 print(p_aprovados)
-print(f'{nmf:.1f}')
+print(f'{n_m_f:.1f}')
