@@ -1,22 +1,21 @@
-#========================================
-# Receber inputs
+dimensoes = input('Digite as dimensoes da matriz:\n').split()
+l, c = int(dimensoes[0]), int(dimensoes[1])
 
-# dimensoes
-dimensoes = input('dimensoes: ')
-dl, dc = int(dimensoes[0]), int(dimensoes[2])
+matriz = []
+matriz_t = [[0 for coluna in range(l)] for linha in range(c)]
 
-valores = []
-matriz_t = []
+print('Digite os elementos da matriz:')
+for linha in range(l):
+    linha = input().split()
+    matriz.append(linha)
 
-#valores
-for linha in range(dl):
-    valores.append(input('valores: ').split())
 
-print(valores)
-'''[['1', '2', '3'], ['4', '5', '6']]'''
-#========================================
-# for linha in range(len(valores)):
-#     # print(" ".join(valores[linha]))
-#     for coluna in range(len(valores[linha])):
-#         matriz_t[f'{coluna},{linha}'] = valores[linha][coluna]
-# print(matriz_t)
+for linha in range(l):
+    for coluna in range(c):
+        matriz_t[coluna][linha] = matriz[linha][coluna]
+
+print('Matriz transposta:')
+for linha in matriz_t:
+    for valor in linha:
+        print(f'{valor:<6}', end='')
+    print()
