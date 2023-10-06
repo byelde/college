@@ -13,4 +13,7 @@ A funcionalidade é simples: ao iniciar o programa, digite um número e será mo
 ## Da execução
 As bibliotecas Time e Os já vêm instaladas juntamente com o Pyhton, sendo necessário apenas a instalação da biblioteca Colored que está anexada no arquivo "requirements.py".
 
+### **OBS:** 
+Caso tenha problema com o comando 'cls', presente no fim do código, troque 'cls' (comando do windows) por 'clear' (comando do linux).
+
 ---
