@@ -1,5 +1,5 @@
 import dash
-from dash import dcc, Input, Output, html
+from dash import dcc, Input, Output, html, State
 import dash_bootstrap_components as dbc
 
 def criarDB():
@@ -135,7 +135,6 @@ class Styles:
             'line-height': 'normal',
         }
 
-
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.layout = html.Div([
@@ -191,8 +190,8 @@ app.layout = html.Div([
             # Buttons
             html.Div([
 
-                dbc.Button('CALCULAR', color = 'danger', id = 'Calcular', style=Styles.buttons),
-                dbc.Button('RESETAR', color = 'danger', id = 'Resetar', outline=True, style=Styles.buttons)
+                dbc.Button('CALCULAR', color = 'danger', id = 'Calcular', style=Styles.buttons, n_clicks=0),
+                dbc.Button('RESETAR', color = 'danger', id = 'Resetar', outline=True, style=Styles.buttons, n_clicks=0)
 
             ], style={'display':'flex', 'flex-direction':'column', 'padding-left':'9%', 'width':'100%'}),
 
@@ -215,7 +214,25 @@ app.layout = html.Div([
 
     ], style=Styles.card)
 
-], style={'width':'100%', 'display':'flex', 'flex-direction':'column', 'align-items':'center', 'justify-content':'center'})
+], style={'width':'100%', 'display':'flex', 'flex-direction':'column','gap':'80px', 'align-items':'center', 'justify-content':'center', 'height':'100%'})
+
+@app.callback([
+    (Output('output_result', 'children')),
+    [Input('Calcular','n_clicks'),
+     State('input-num', 'value'),
+     State('input-baseI', 'value'),
+     State('input-baseF', 'value')]
+])
+def converter(nclicks, num, bi, bf):
+
+    num, bi, bf = int(num), int(bi), int(bf)
+
+    click = nclicks
+    db = criarDB
+    na10 = toTen(bi, num, db)
+    nabf = tenToB(bf, na10, db)
+
+    return(str(nabf))
 
 if __name__ == '__main__':
     app.run_server(debug = True)
