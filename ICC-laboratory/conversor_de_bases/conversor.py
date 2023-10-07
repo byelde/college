@@ -2,78 +2,6 @@ import dash
 from dash import dcc, Input, Output, html, State
 import dash_bootstrap_components as dbc
 
-def criarDB():
-
-    DB = {}
-    alfabeto = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-
-    for n in range(10):
-        DB[str(n)] = str(n)
-
-    for n in range(10,36):
-        DB[str(alfabeto[n-10])] = str(n)
-
-    return DB
-
-def inputNum():
-
-    while True:
-
-        try:
-
-            number = input('Número: ').split('.')
-            iBase = int(input('Base: '))
-            fBase = int(input('Para base: '))
-            return iBase, fBase, number
-        
-        except Exception as er:
-
-            # print(er)
-            print('Insira valores válido.')    
-
-def toTen(b, num, DB):
-
-    # Parte inteira:
-
-    partInt_i = num[0][::-1]
-    partInt_C = 0
-
-    for idx, digito in enumerate(partInt_i):
-        partInt_C += int(DB[digito.upper()])*(b**idx)
-
-
-    return partInt_C
-
-def tenToB(b, num, DB):
-
-    numConvertido = ''
-
-    # Parte inteira
-
-    while True:
-
-        for index, value in DB.items():
-            if value == str(num%b):
-                numConvertido += index
-                break
-
-        num = num//b
-
-        if num < b:
-            for index, value in DB.items():
-                if value == str(num):
-                    numConvertido += index
-                    break
-            break
-
-    return numConvertido[::-1]
-    
-def conversor():
-
-    db = criarDB()
-    init_base, final_base, init_num = inputNum()
-    num_base10 = toTen(init_base, init_num, db)
-    return tenToB(final_base, num_base10, db)
 
 class Styles:
         header = {
@@ -225,14 +153,44 @@ app.layout = html.Div([
 ])
 def converter(nclicks, num, bi, bf):
 
-    num, bi, bf = int(num), int(bi), int(bf)
+    num, bi, bf = str(num), int(bi), int(bf)
 
-    click = nclicks
-    db = criarDB
-    na10 = toTen(bi, num, db)
-    nabf = tenToB(bf, na10, db)
+    num = num[::-1]
 
-    return(str(nabf))
+    db = '0123456789abcdefghijklmnopqrstuvwxyz'
+
+    # Para base 10
+
+    na10 = 0
+
+    for idx_digito, digito in enumerate(num):
+        for idx_db, db_digito in enumerate(db):
+            if digito == db_digito:
+                na10 += ((int(bi)**idx_digito)*int(idx_db))
+
+    # Para a base final (bf)
+
+    nabf = ''
+
+    while True:
+         
+        if na10 < bf:
+            for idx_db, db_digito in enumerate(db):
+                  if str(na10) == str(idx_db):
+                       nabf += db_digito.upper()
+                       break
+            break
+
+        
+        for idx_db, db_digito in enumerate(db):
+            if idx_db == na10%bf:
+                nabf += str(db_digito).upper()
+                na10 = na10//bf
+                break
+
+
+    return [nabf[::-1]]
+
 
 if __name__ == '__main__':
     app.run_server(debug = True)
