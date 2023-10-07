@@ -6,7 +6,7 @@ Esse foi um trabalho solicitado para a matéria Introdução à Ciência da Comp
 A funcionalidade é simples: ao iniciar o programa, digite um número e será mostrado, em um menu no terminal, o valor do fatorial calculado de maneira interativa e recursiva.
 
 <p align="center">
-  <img src="https://github.com/byelde/college/assets/140332227/85e58eb0-3a5b-44f8-b521-55cce6183d2b">
+  <img src="https://github.com/byelde/college/assets/140332227/daa4aa2b-3838-47f6-b6c3-7e124af18d63">
 </p>
 
 ---
