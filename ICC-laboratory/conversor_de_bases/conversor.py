@@ -85,7 +85,6 @@ class Styles:
 
         headerText = {
             'color': '#FFF',
-            'font-family': 'Kantumruy',
             'font-size': '32px',
             'font-style': 'bold',
             'font-weight': '700',
@@ -98,47 +97,125 @@ class Styles:
             'height':'768px',
             'border-radius': '20px',
             'background':'#FFF',
-            'box-shadow' : '0 0px 20px 0 rgba(0, 0, 0, 0.25)'
+            'box-shadow' : '0 0px 20px 0 rgba(0, 0, 0, 0.25)',
         }
 
         titleText = {
-            'color': '#000',
-            'font-family': 'Kantumruy',
-            'font-size': '32px',
-            'font-style': 'bold',
-            'font-weight': '700',
-            'line-height': 'normal',
-            'padding-left':'1%'
+            'color' : '#000',
+            'font-size' : '32px',
+            'font-style' : 'bold',
+            'font-weight' : '700',
+            'line-height' : 'normal',
+            'padding-left' :'1%'
         }
 
-app = dash.Dash(__name__)
+        inputs = {
+            'marging-left':'9%',
+            'marging-right':'9%',
+            'padding-bottom':'6%',
+            'width' : '20%'
+        }
 
-app.layout = dbc.Container([
-    dbc.Row([
-        html.P('Laboratório ICC', style=Styles.headerText)
-    ], style=Styles.header),
+        buttons = {
+            'width':'20%'
+        }
 
-    dbc.Row([
+        outputTitle = {
+            'font-size': '24px',
+            'font-style': 'normal',
+            'font-weight': '700',
+            'line-height': 'normal'
+        }
+
+        outputText = {
+            'color': '#E72313',
+            'font-size': '128px',
+            'font-style': 'normal',
+            'font-weight': '700',
+            'line-height': 'normal',
+        }
+
+
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+app.layout = html.Div([
+ 
+    # Header
+    html.Div([
+        dbc.Label('Laboratório ICC', style=Styles.headerText)
+    ], style={'background-color':'#E72313', 'width':'100%'}),
+
+    # Card
+    html.Div([
+
         html.Div([
+            
+            # Title
+            html.Div([
 
-            dbc.Row([
-                html.P('Conversor de bases numéricas', style=Styles.titleText)
-            ]),
+                html.Img(src=r'assets/logo.png', alt='image'),
+                html.H3(
+                        'Conversor de bases numéricas.',
+                        style={'padding-left':'1%'}
+                )
 
-            dbc.Row([
+            ], style={'display' : 'flex', 'align-items':'center', 'padding':'3%', 'width':'100%'}),
 
-            ]),
+            # Inputs
+            html.Div([
+                html.Div([
 
-            dbc.Row([
+                    dbc.Label('Número:'),
+                    dbc.Input(placeholder = 'Digite um valor inteiro', id = 'input-num', type = 'number'),
+                    dbc.FormText('*Valores entre as bases 2-36')
 
-            ]),
+                ], style=Styles.inputs),
 
-            dbc.Row([
+                html.Div([
 
-            ]),
-        ], style=Styles.card)
-    ], style={'align-items':'center'}),
-])
+                    dbc.Label('Base Inicial:'),
+                    dbc.Input(placeholder = 'Digite um valor inteiro', id = 'input-baseI', type = 'number'),
+                    dbc.FormText('*Valor entre 2-36')
+
+                ], style=Styles.inputs),
+
+                html.Div([
+
+                    dbc.Label('Base Final:'),
+                    dbc.Input(placeholder = 'Digite um valor inteiro', id = 'input-baseF', type = 'number'),
+                    dbc.FormText('*Valor entre 2-36')
+                ], style=Styles.inputs),
+
+            ], style={'display':'flex', 'flex-direction':'row', 'justify-content':'center', 'width':'100%', 'justify-content':'space-evenly', 'align-items':'center'}),
+
+            # Buttons
+            html.Div([
+
+                dbc.Button('CALCULAR', color = 'danger', id = 'Calcular', style=Styles.buttons),
+                dbc.Button('RESETAR', color = 'danger', id = 'Resetar', outline=True, style=Styles.buttons)
+
+            ], style={'display':'flex', 'flex-direction':'column', 'padding-left':'9%', 'width':'100%'}),
+
+            # Output
+            html.Div([
+
+                dbc.Label(
+                    'Resultado: ',
+                    style=Styles.outputTitle
+                ),
+                dbc.Label(
+                    children = 'Resultado.',
+                    id = 'output_result',
+                    style=Styles.outputText
+                )
+
+            ], style={'display':'flex', 'flex-direction':'column', 'padding-left':'9%', 'padding-top':'3%', 'width':'100%'}),
+
+        ], style={'display':'flex', 'flex-direction':'column', 'align-items' : 'center', })
+
+    ], style=Styles.card)
+
+], style={'width':'100%', 'display':'flex', 'flex-direction':'column', 'align-items':'center', 'justify-content':'center'})
 
 if __name__ == '__main__':
     app.run_server(debug = True)
