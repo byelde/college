@@ -3,110 +3,52 @@ from dash import dcc, Input, Output, html, State
 import dash_bootstrap_components as dbc
 from styles import Styles
 
-# class Styles:
+def parab10(num, bi):
+    num = num[::-1]
+
+    db = '0123456789abcdefghijklmnopqrstuvwxyz'[:bi+1]
+
+    # Para base 10
+
+    na10 = 0
+
+    for idx_digito, digito in enumerate(num):
+
+        if digito.isalpha():
+            digito = digito.lower()
+
+        for idx_db, db_digito in enumerate(db):
+            if digito == db_digito:
+                na10 += ((int(bi)**idx_digito)*int(idx_db))
+    
+    return na10
+
+def parabf(na10, bf):
+
+    # Para a base final (bf)
+
+    db = '0123456789abcdefghijklmnopqrstuvwxyz'[:bf+1]
+
+    nabf = ''
+
+    while True:
         
-#         page = {
-#              'width':'100%',
-#              'display':'flex',
-#              'flex-direction':'column',
-#              'gap':'80px',
-#              'align-items':'center',
-#              'justify-content':'center',
-#              'height':'100%'}
+        if na10 < bf:
+            for idx_db, db_digito in enumerate(db):
+                if str(na10) == str(idx_db):
+                    nabf += db_digito.upper()
+                    break
+            break
 
-#         header = {
-#              'background-color':'#E72313',
-#              'width':'100%'
-#         }
-
-#         headerText = {
-#             'color': '#FFF',
-#             'font-size': '32px',
-#             'font-style': 'bold',
-#             'font-weight': '700',
-#             'line-height': 'normal',
-#             'padding-left':'1%'
-#         }
-
-#         card = {
-#             'width':'70%',
-#             'height':'768px',
-#             'border-radius': '20px',
-#             'background':'#FFF',
-#             'box-shadow' : '0 0px 20px 0 rgba(0, 0, 0, 0.25)',
-#         }
-
-#         cardChildren = {
-#              'display':'flex',
-#              'flex-direction':'column',
-#              'align-items' : 'center'
-#         }
-
-#         title = {
-#              'display' : 'flex',
-#              'align-items':'center',
-#              'padding':'3%',
-#              'width':'100%'
-#         } 
-
-#         titleText = {
-#             'color' : '#000',
-#             'font-size' : '32px',
-#             'font-style' : 'bold',
-#             'font-weight' : '700',
-#             'line-height' : 'normal',
-#             'padding-left' :'1%'
-#         }
-
-#         inputsParent = {
-#              'display':'flex',
-#              'flex-direction':'row',
-#              'justify-content':'center',
-#              'width':'100%',
-#              'justify-content':'space-evenly',
-#              'align-items':'center'
-#         }
-
-#         inputs = {
-#             'marging-left':'9%',
-#             'marging-right':'9%',
-#             'padding-bottom':'6%',
-#             'width' : '20%'
-#         }
-
-#         buttonsParent = {
-#              'display':'flex',
-#              'flex-direction':'column',
-#              'padding-left':'9%',
-#              'width':'100%'
-#         }
-
-#         buttons = {
-#             'width':'20%'
-#         }
-
-#         outputParent = {
-#              'display':'flex',
-#              'flex-direction':'column',
-#              'padding-left':'9%',
-#              'padding-top':'3%',
-#              'width':'100%'
-#         }
-
-#         outputTitle = {
-#             'font-size': '24px',
-#             'font-style': 'normal',
-#             'font-weight': '700',
-#             'line-height': 'normal'
-#         }
-
-#         outputText = {
-#             'color': '#E72313',
-#             'font-size': '128px',
-#             'font-style': 'normal',
-#             'font-weight': '700',
-#             'line-height': 'normal',
-#         }
+        
+        for idx_db, db_digito in enumerate(db):
+            if idx_db == na10%bf:
+                nabf += str(db_digito).upper()
+                na10 = na10//bf
+                break
+    
+    
+    return [nabf[::-1]]
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -135,7 +77,7 @@ app.layout = html.Div([
                 html.Div([
 
                     dbc.Label('Número:', style=Styles.inputsLabels),
-                    dbc.Input(placeholder = 'Digite um valor inteiro', valid = True, id = 'input-num', type = 'text'),
+                    dbc.Input(placeholder = 'Digite um valor inteiro', valid = False, id = 'input-num', type = 'text'),
                     dbc.FormText('*Valores entre as bases 2-36')
 
                 ], style=Styles.inputs),
@@ -143,7 +85,7 @@ app.layout = html.Div([
                 html.Div([
 
                     dbc.Label('Base Inicial:', style=Styles.inputsLabels),
-                    dbc.Input(placeholder = 'Digite um valor inteiro', valid = True, id = 'input-baseI', type = 'number'),
+                    dbc.Input(placeholder = 'Digite um valor inteiro', valid = False, id = 'input-baseI', type = 'number'),
                     dbc.FormText('*Valor entre 2-36')
 
                 ], style=Styles.inputs),
@@ -151,7 +93,7 @@ app.layout = html.Div([
                 html.Div([
 
                     dbc.Label('Base Final:', style=Styles.inputsLabels),
-                    dbc.Input(placeholder = 'Digite um valor inteiro', valid = True, id = 'input-baseF', type = 'number'),
+                    dbc.Input(placeholder = 'Digite um valor inteiro', valid = False, id = 'input-baseF', type = 'number'),
                     dbc.FormText('*Valor entre 2-36')
                 ], style=Styles.inputs),
 
@@ -191,71 +133,68 @@ app.layout = html.Div([
     [Input('Calcular','n_clicks'),
      State('input-num', 'value'),
      State('input-baseI', 'value'),
-     State('input-baseF', 'value')],
+     State('input-baseF', 'value'),
+     State('input-num', 'valid'),
+     State('input-baseI', 'valid'),
+     State('input-baseF', 'valid'),],
 ],prevent_initial_call = True,)
-def converter(nclicks, num, bi, bf):
+def converter(nclicks, num, bi, bf, valnum, valbasei, valbasef):
 
-    num, bi, bf = str(num), int(bi), int(bf)
+    if valnum and valbasei and valbasef:
+        num, bi, bf = str(num), int(bi), int(bf)
 
-    num = num[::-1]
+        na10 = parab10(num,bi)
+        nabf = parabf(na10, bf)
 
-    db = '0123456789abcdefghijklmnopqrstuvwxyz'
+        return[nabf]
 
-    # Para base 10
-
-    na10 = 0
-
-    for idx_digito, digito in enumerate(num):
-        for idx_db, db_digito in enumerate(db):
-            if digito == db_digito:
-                na10 += ((int(bi)**idx_digito)*int(idx_db))
-
-    # Para a base final (bf)
-
-    nabf = ''
-
-    while True:
-         
-        if na10 < bf:
-            for idx_db, db_digito in enumerate(db):
-                  if str(na10) == str(idx_db):
-                       nabf += db_digito.upper()
-                       break
-            break
-
-        
-        for idx_db, db_digito in enumerate(db):
-            if idx_db == na10%bf:
-                nabf += str(db_digito).upper()
-                na10 = na10//bf
-                break
-
-
-    return [nabf[::-1]]
+    
+    else:
+        return['Valores inválidos']
 
 @app.callback([
-    Output('input-num', 'value'),
-    Output('input-baseI', 'value'),
-    Output('input-baseF', 'value'),
+    Output('input-num', 'value', allow_duplicate=True),
+    Output('input-baseI', 'value', allow_duplicate=True),
+    Output('input-baseF', 'value', allow_duplicate=True),
     Output('output_result', 'children'),
+    Output('input-num', 'valid', allow_duplicate=True),
+    Output('input-baseI', 'valid', allow_duplicate=True),
+    Output('input-baseF', 'valid', allow_duplicate=True),
     [Input('Resetar', 'n_clicks')]
-])
+],prevent_initial_call = True,)
 def reset(n_clicks):
-    return (None, None, None, 'Resultado')
+    return (None, None, None, 'Resultado', False, False, False)
 
 @app.callback([
     Output('input-num', 'valid'),
-    [Input('input-num', 'value')]
+    Output('input-baseI', 'valid'),
+    Output('input-baseF', 'valid'),
+    [Input('input-num', 'value'),
+     Input('input-baseI', 'value'),
+     Input('input-baseF', 'value'),]
 ], prevent_initial_call = True)
-def validateInputs(text):
+def validateInputs(input_num, input_baseI, input_baseF):
+
+    db = '0123456789abcdefghijklmnopqrstuvwxyz'
+
     try:
-        for letra in text:
-            if letra in '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ':
-                return [True]
-            else:
-                return [False]
-    except:
-        return [False]
+        retnum, retbasei, retbasef = True, True, True
+
+        for letra in input_num:
+            if letra not in '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ':
+                retnum = False
+                break
         
+        if input_baseI not in range(2,37):
+            retbasei = False
+        
+        if input_baseF not in range(2,37):
+            retbasef = False
+
+        return [retnum, retbasei, retbasef]
+
+    except:
+        return [False, False, False]
+
 if __name__ == '__main__':
     app.run_server(debug = True)

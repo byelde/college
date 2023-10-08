@@ -26,7 +26,6 @@ class Styles:
 
         card = {
             'width':'70%',
-            'height':'768px',
             'border-radius': '20px',
             'background':'#FFF',
             'box-shadow' : '0 0px 20px 0 rgba(0, 0, 0, 0.25)',
@@ -92,10 +91,13 @@ class Styles:
 
         outputParent = {
              'display':'flex',
+             'justify-content':'flex-start',
              'flex-direction':'column',
-             'padding-left':'9%',
+             'padding-left':'5%',
              'padding-top':'3%',
-             'width':'100%'
+             'width':'90%',
+             'overflow-wrap':'break-word',
+             'margin-bottom':'12px'
         }
 
         outputTitle = {
@@ -111,4 +113,5 @@ class Styles:
             'font-style': 'normal',
             'font-weight': '700',
             'line-height': 'normal',
+            'width':'100%',
         }
