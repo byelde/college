@@ -29,6 +29,7 @@ class Styles:
             'border-radius': '20px',
             'background':'#FFF',
             'box-shadow' : '0 0px 20px 0 rgba(0, 0, 0, 0.25)',
+            'margin-bottom' : '80px'
         }
 
         cardChildren = {
@@ -114,4 +115,5 @@ class Styles:
             'font-weight': '700',
             'line-height': 'normal',
             'width':'100%',
+            'line-height':'0.9em'
         }
