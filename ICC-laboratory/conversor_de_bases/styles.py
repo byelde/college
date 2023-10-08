@@ -1,32 +1,114 @@
-na10 = 0
-num = 765
-num = str(num)[::-1]
-bi=8
-bf=16
-
-db = '0123456789abcdefghijklmnopqrstuvwxyz'
-
-for idx_digito, digito in enumerate(num):
-    for idx_db, db_digito in enumerate(db):
-        if digito == db_digito:
-            na10 += ((int(bi)**idx_digito)*int(idx_db))
-
-nabf = ''
-
-while True:
-         
-        if na10 < bf:
-            for idx_db, db_digito in enumerate(db):
-                  if str(na10) == str(idx_db):
-                       nabf += db_digito
-                       break
-            break
-
+class Styles:
         
-        for idx_db, db_digito in enumerate(db):
-            if idx_db == na10%bf:
-                nabf += str(db_digito)
-                na10 = na10//bf
-                break
+        page = {
+             'width':'100%',
+             'display':'flex',
+             'flex-direction':'column',
+             'gap':'80px',
+             'align-items':'center',
+             'justify-content':'center',
+             'height':'100%'
+        }
 
+        header = {
+             'background-color':'#E72313',
+             'width':'100%'
+        }
 
+        headerText = {
+            'color': '#FFF',
+            'font-size': '44px',
+            'font-style': 'bold',
+            'font-weight': '700',
+            'line-height': 'normal',
+            'padding-left':'1%'
+        }
+
+        card = {
+            'width':'70%',
+            'height':'768px',
+            'border-radius': '20px',
+            'background':'#FFF',
+            'box-shadow' : '0 0px 20px 0 rgba(0, 0, 0, 0.25)',
+        }
+
+        cardChildren = {
+             'display':'flex',
+             'flex-direction':'column',
+             'align-items' : 'center'
+        }
+
+        title = {
+             'display' : 'flex',
+             'align-items':'center',
+             'padding':'3%',
+             'width':'100%'
+        } 
+
+        titleText = {
+            'color' : '#000',
+            'font-size' : '32px',
+            'font-style' : 'bold',
+            'font-weight' : '700',
+            'line-height' : 'normal',
+            'padding-left' :'1%'
+        }
+
+        inputsParent = {
+             'display':'flex',
+             'flex-direction':'row',
+             'justify-content':'center',
+             'width':'100%',
+             'justify-content':'space-evenly',
+             'align-items':'center'
+        }
+
+        inputsLabels = {
+            'color': '#000',
+            'font-size': '16px',
+            'font-style': 'normal',
+            'font-weight': '700',
+            'line-height': 'normal',
+        }
+
+        inputs = {
+            'marging-left':'9%',
+            'marging-right':'9%',
+            'padding-bottom':'6%',
+            'width' : '20%'
+        }
+
+        buttonsParent = {
+             'display':'flex',
+             'flex-direction':'column',
+             'padding-left':'9%',
+             'width':'100%'
+        }
+
+        buttons = {
+            'width':'20%',
+            'margin':'8px'
+        }
+
+        outputParent = {
+             'display':'flex',
+             'flex-direction':'column',
+             'padding-left':'9%',
+             'padding-top':'3%',
+             'width':'100%'
+        }
+
+        outputTitle = {
+            'font-size': '24px',
+            'font-style': 'normal',
+            'font-weight': '700',
+            'line-height': 'normal'
+        }
+
+        outputText = {
+            'color': '#E72313',
+            'font-size': '128px',
+            'font-style': 'normal',
+            'font-weight': '700',
+            'line-height': 'normal',
+        }
