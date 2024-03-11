@@ -114,11 +114,3 @@ class Aluno:
         self.nome, self.nota = nome, nota
         self.proximo = None
         self.anterior = None
-        
-
-lista = ListaDinamica()
-lista.addInicio(nome="Gabs", nota=10)
-lista.addInicio(nome="Emy", nota=10)
-lista.addFim(nome="Henri", nota=10)
-# lista.mostrar()
-lista.mostrar(reverse=True)

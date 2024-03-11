@@ -87,17 +87,3 @@ class Aluno:
     def __init__(self, nome, nota):
         self.nome, self.nota = nome, nota
         self.proximo = None
-        
-        
-        
-lista = ListaDinamica()
-lista.addInicio("Eduardo", -1)
-lista.addFim("Kenandja", -1)
-lista.addFim("Indigente", 1)
-lista.addFim("Gabryel", -1)
-lista.retirarNota(-1)
-lista.itens()
-lista.estaVazio()
-lista.esvaziar()
-lista.estaVazio()
-lista.itens()
