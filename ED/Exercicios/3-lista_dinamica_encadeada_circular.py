@@ -31,8 +31,8 @@ class ListaDinamica:
         
         if self.inicio == None:
             self.fim = self.inicio = Aluno(nome, nota)
-            self.inicio.proximo, self.inicio.anterior = self.fim, self.fim
-            self.fim.proximo, self.fim.anterior = self.inicio, self.inicio
+            self.inicio.proximo = self.inicio.anterior = self.fim
+            self.fim.proximo = self.fim.anterior = self.inicio
 
         else:
             novo_item = Aluno(nome, nota)
@@ -45,8 +45,8 @@ class ListaDinamica:
     def addFim(self, nome:str, nota:float):
         if self.inicio == None:
             self.fim = self.inicio = Aluno(nome, nota)
-            self.inicio.proximo, self.inicio.anterior = self.fim, self.fim
-            self.fim.proximo, self.fim.anterior = self.inicio, self.inicio
+            self.inicio.proximo = self.inicio.anterior = self.fim
+            self.fim.proximo = self.fim.anterior = self.inicio
 
         else:
             novo_item = Aluno(nome, nota)
@@ -56,6 +56,41 @@ class ListaDinamica:
             self.fim.proximo = self.inicio
             self.inicio.anterior = self.fim
                
+    def addListaFim(self, array:list):
+        for item in array:
+            self.addFim(item.nome, item.nota)               
+      
+    def comprimento(self):
+        
+        if self.inicio == None:
+            return 0
+        
+        item_atual = self.inicio
+        tamanho = 1
+        item_atual = item_atual.proximo 
+        
+        while item_atual != self.inicio:
+            tamanho += 1              
+            item_atual = item_atual.proximo
+            
+        return tamanho
+    
+    def vetorizar(self):
+        vetor = []
+        
+        if self.inicio == None:
+            return vetor
+        
+        item_atual = self.inicio
+        vetor.append(item_atual)
+        item_atual = item_atual.proximo 
+        
+        while item_atual != self.inicio:
+            vetor.append(item_atual)            
+            item_atual = item_atual.proximo
+            
+        return vetor
+       
     def estaVazio(self):
         return self.inicio == None
     
@@ -202,3 +237,10 @@ class Aluno:
         self.nome, self.nota = nome, nota
         self.proximo = None
         self.anterior = None
+
+lista = ListaDinamica()
+array = [Aluno("Gabs", 10), Aluno("Eduardo", 10), Aluno("Kenandja", 10)]
+lista.addListaFim(array)
+lista.mostrar()
+print(lista.comprimento())
+print(lista.vetorizar())
