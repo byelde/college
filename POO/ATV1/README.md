@@ -32,11 +32,11 @@ Clique [aqui](POOATV1.pdf) para ter acesso ao pdf da atividade.
 #### Erro:
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/ba70f17c-afc2-488b-a7d5-1b942cb4fb6c">
+  <img src="https://github.com/user-attachments/assets/a1736b35-6bcd-4df9-8364-4f757cba4eeb">
 </p>
 
 **Resposta**: Ocorreu um erro de visibilidade no atributos da instância de `Carta`, pois os atributos de `Carta` têm a visibilidade `protected` (data) e de `standard` (nome e anexo), portanto invisíveis para o arquivo `Inicial.java`. Para evitar o erro, bastou usar o método público `mostra()` já existente na classe `Carta`.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/500b7871-7d61-4ccc-9b88-e9ae193097cb">
+  <img src="https://github.com/user-attachments/assets/9898c9cb-1f94-4a8c-88b5-36a0131c1bab">
 </p>
