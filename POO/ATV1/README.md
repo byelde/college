@@ -27,7 +27,7 @@ Clique [aqui](POOATV1.pdf) para ter acesso ao pdf da atividade.
 
 ***
 
-**11**. Na classe Inicial, crie o método `main()`, que instancie um objeto do tipo Carta e imprima na tela os valores dos atributos do objeto. O que aconteceu? Como você poderia corrigir o problema? Justifique através de um comentário no código.
+**12**. Na classe Inicial, crie o método `main()`, que instancie um objeto do tipo Carta e imprima na tela os valores dos atributos do objeto. O que aconteceu? Como você poderia corrigir o problema? Justifique através de um comentário no código.
 
 #### Erro:
 
@@ -35,7 +35,7 @@ Clique [aqui](POOATV1.pdf) para ter acesso ao pdf da atividade.
   <img src="https://github.com/user-attachments/assets/ba70f17c-afc2-488b-a7d5-1b942cb4fb6c">
 </p>
 
-**Resposta**: Ocorreu um erro de tipo, pois a classe `Carta`, inicialmente, não está visível para o arquivo `Inicial.java` por estarem em pacotes diferentes. Para corrigir isso, bastou apenas importar a classe `Carta` do pacote `pacote1`.
+**Resposta**: Ocorreu um erro de visibilidade no atributos da instância de `Carta`, pois os atributos de `Carta` têm a visibilidade `protected` (data) e de `standard` (nome e anexo), portanto invisíveis para o arquivo `Inicial.java`. Para evitar o erro, bastou usar o método público `mostra()` já existente na classe `Carta`.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/500b7871-7d61-4ccc-9b88-e9ae193097cb">
