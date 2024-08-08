@@ -22,7 +22,7 @@ Clique [aqui](POOATV1.pdf) para ter acesso ao pdf da atividade.
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/4890d8ac-8506-4fe0-8098-e8fec18262fb" width=500>
+  <img src="https://github.com/user-attachments/assets/4890d8ac-8506-4fe0-8098-e8fec18262fb">
 </p>
 
 ***
