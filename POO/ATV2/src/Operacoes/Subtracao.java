@@ -1,6 +1,6 @@
 package Operacoes;
 
-public class Subtracao extends Operacao {
+public class Subtracao implements Operacao {
 
     public Subtracao(){
         super.setSimbolo('-');

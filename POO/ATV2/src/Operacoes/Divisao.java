@@ -1,6 +1,6 @@
 package Operacoes;
 
-public class Divisao extends Operacao {
+public class Divisao implements Operacao {
 
     public Divisao(){
         super.setSimbolo('/');

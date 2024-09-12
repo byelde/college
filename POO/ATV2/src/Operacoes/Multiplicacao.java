@@ -1,6 +1,6 @@
 package Operacoes;
 
-public class Multiplicacao extends Operacao {
+public class Multiplicacao implements Operacao {
 
     public Multiplicacao(){
         super.setSimbolo('*');

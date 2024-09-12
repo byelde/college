@@ -1,6 +1,6 @@
 package Operacoes;
 
-public class Adicao extends Operacao {
+public class Adicao implements Operacao {
 
     public Adicao(){
         super.setSimbolo('+');

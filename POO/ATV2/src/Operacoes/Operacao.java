@@ -1,6 +1,6 @@
 package Operacoes;
 
-public class Operacao {    
+public interface Operacao {    
 
     private char simbolo = '?';
 
