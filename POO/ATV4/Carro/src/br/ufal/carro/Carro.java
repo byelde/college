@@ -37,6 +37,11 @@ public class Carro {
 
 	public void acelerar(int quantCombustivel) {
 
+		if( !motor.isLigado() ){
+			System.out.println("Ligue o carro, moreno.");
+			return;
+		}
+
 		if( this.tanque.getQuantidadePresente() <= 0 ){
 			System.out.println("Ta ruim, leve o " + this.modelo + " no posto.");
 			return;
