@@ -2,3 +2,5 @@ output
 .vscode
 .gitattributes
 *.exe
+Compsci Repository/
+*/.venv/
